@@ -1,0 +1,8 @@
+# Original task files (asset zip, personal documents) — not part of the site
+files/
+
+# OS / editor clutter
+.DS_Store
+__MACOSX/
+Thumbs.db
+.vscode/
