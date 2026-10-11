@@ -84,15 +84,21 @@
   const dayImgs = daySection ? [...daySection.querySelectorAll('.day__img')] : [];
   const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-  // Banners: scale 0.9 → 1 and opacity 0.2 → 1 while the banner's top travels from 120% to 22% of the viewport height
+  // Banners: the first one scales 0.9 → 1 and fades 0.2 → 1 as it enters (reference timing), then pins.
+  // Each following banner slides over the pinned one, which shrinks and dims as it gets covered.
   const updateFeatures = () => {
     const vh = window.innerHeight;
-    features.forEach((feature) => {
-      const wrap = feature.parentElement;
-      const top = wrap.getBoundingClientRect().top + parseFloat(getComputedStyle(wrap).paddingTop);
-      const p = clamp01((vh * 1.198 - top) / (vh * 0.978));
-      feature.style.setProperty('--scale', (0.9 + 0.1 * p).toFixed(4));
-      feature.style.setProperty('--fo', (0.2 + 0.8 * p).toFixed(4));
+    const wrap = features[0] && features[0].parentElement;
+    if (!wrap) return;
+    const top = wrap.getBoundingClientRect().top + parseFloat(getComputedStyle(wrap).paddingTop);
+    const enter = clamp01((vh * 1.198 - top) / (vh * 0.978));
+    features.forEach((feature, i) => {
+      const next = features[i + 1];
+      const covered = next ? clamp01(1 - next.getBoundingClientRect().top / feature.offsetHeight) : 0;
+      const entryScale = i === 0 ? 0.9 + 0.1 * enter : 1;
+      feature.style.setProperty('--scale', (entryScale * (1 - covered * 0.1)).toFixed(4));
+      feature.style.setProperty('--fo', (i === 0 ? 0.2 + 0.8 * enter : 1).toFixed(4));
+      feature.style.setProperty('--bright', (1 - covered * 0.7).toFixed(4));
     });
   };
 

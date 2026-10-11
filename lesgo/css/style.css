@@ -348,21 +348,24 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    FEATURE BANNERS
    ========================================================= */
-/* Each banner enters at 90% scale / 20% opacity, grows to full size, then pins for a while (measured from the reference) */
+/* Lemon Heat enters at 90% scale / 20% opacity (measured from the reference) and pins;
+   Electric Lime then slides over it while it shrinks and dims */
 .features {
   --fh: clamp(520px, 48.3vw, 700px);     /* banner height: 696px on a 1440px frame */
-  --pin: clamp(200px, 44vw, 640px);      /* how long it stays pinned */
-  --gap: clamp(60px, 12.5vw, 180px);     /* black space above each banner */
+  --pin: clamp(200px, 44vw, 640px);      /* how long the stack stays pinned at the end */
+  --gap: clamp(60px, 12.5vw, 180px);     /* black space above the banners */
 }
-.feature-wrap { height: calc(var(--gap) + var(--fh) + var(--pin)); padding-top: var(--gap); }
+.feature-wrap { padding-top: var(--gap); }
+.feature-wrap::after { content: ""; display: block; height: var(--pin); }   /* spacer inside the content box keeps the stack pinned */
 .feature {
   position: sticky;
   top: 0;
   height: var(--fh);
   overflow: hidden;
-  transform: scale(var(--scale, 0.9));
-  opacity: var(--fo, 0.2);
-  will-change: transform, opacity;
+  transform: scale(var(--scale, 1));
+  opacity: var(--fo, 1);
+  filter: brightness(var(--bright, 1));
+  will-change: transform, opacity, filter;
 }
 .feature picture { position: absolute; inset: 0; }
 .feature__bg {
@@ -723,5 +726,5 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
-  .feature { transform: none; opacity: 1; }
+  .feature { transform: none; opacity: 1; filter: none; }
 }
