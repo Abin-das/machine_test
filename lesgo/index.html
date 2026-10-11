@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LESGO — Start your day. Hit go.</title>
+  <meta name="description" content="LESGO daily performance drink. Energy, focus, hydration and performance in every scoop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <button class="header__burger" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#" class="header__logo" aria-label="LESGO home">
+        <img src="assets/img/logo.png" alt="LESGO" width="100" height="23" />
+      </a>
+      <nav class="header__nav" id="nav" aria-label="Main">
+        <a href="#best-sellers">Shop</a>
+        <a href="#intro">Why LESGO</a>
+        <a href="#flavors">Formulas</a>
+        <a href="#footer">Contact Us</a>
+      </nav>
+      <a href="#" class="header__cart" aria-label="Cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <video class="hero__video" src="assets/video/hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <span class="line"><span class="word">Start</span> <span class="word">your</span> <span class="word">day.</span></span>
+          <span class="line"><span class="word">Hit</span> <span class="word">go.</span></span>
+        </h1>
+        <a href="#best-sellers" class="btn btn--yellow hero__btn"><span>Shop Lesgo</span></a>
+      </div>
+    </section>
+
+    <!-- ============ FLAVORS ============ -->
+    <section class="flavors" id="flavors">
+      <h2 class="section-title reveal">Choose your flavor</h2>
+      <div class="flavors__ticker">
+        <div class="flavors__track" id="flavorTrack">
+          <article class="flavor-card" style="--glow:#025ff8">
+            <div class="flavor-card__text">
+              <h3>Artic Surge</h3>
+              <p>Blue Raspberry Lemonade</p>
+            </div>
+            <img src="assets/products/artic-surge.png" alt="LESGO Artic Surge tub" loading="lazy" />
+          </article>
+          <article class="flavor-card" style="--glow:#ace804">
+            <div class="flavor-card__text">
+              <h3>Electric Lime</h3>
+              <p>Lime with Ginger</p>
+            </div>
+            <img src="assets/products/electric-lime.png" alt="LESGO Electric Lime tub" loading="lazy" />
+          </article>
+          <article class="flavor-card" style="--glow:#cf0820">
+            <div class="flavor-card__text">
+              <h3>Cherry Rush</h3>
+              <p>Black Cherry Limeade</p>
+            </div>
+            <img src="assets/products/cherry-rush.png" alt="LESGO Cherry Rush tub" loading="lazy" />
+          </article>
+          <article class="flavor-card" style="--glow:#f86401">
+            <div class="flavor-card__text">
+              <h3>Mango Fuego</h3>
+              <p>Mango With TAJÍN®</p>
+            </div>
+            <img src="assets/products/mango-fuego.png" alt="LESGO Mango Fuego tub" loading="lazy" />
+          </article>
+          <article class="flavor-card" style="--glow:#fcca02">
+            <div class="flavor-card__text">
+              <h3>Lemon Heat</h3>
+              <p>Lemon with Cayenne</p>
+            </div>
+            <img src="assets/products/lemon-heat.png" alt="LESGO Lemon Heat tub" loading="lazy" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTRO / BENEFITS ============ -->
+    <section class="intro" id="intro">
+      <h2 class="intro__title reveal">Energy. Focus.<br />Hydration.<br />Performance.</h2>
+      <div class="benefits">
+        <div class="benefits__slot" id="canSlot" aria-hidden="true"></div>
+        <div class="benefit benefit--1 reveal"><span>01</span><h3>Energy</h3><p>200mg Natural Caffeine</p></div>
+        <div class="benefit benefit--2 reveal"><span>02</span><h3>Hydration</h3><p>Electrolytes</p></div>
+        <div class="benefit benefit--3 reveal"><span>03</span><h3>Focus</h3><p>300mg Alpha GPC + 500mg Lion’s Mane</p></div>
+        <div class="benefit benefit--4 reveal"><span>04</span><h3>Performance</h3><p>5g Creatine + 3g L-Citruline</p></div>
+      </div>
+      <!-- Tub that travels on scroll: title → benefits → Lemon Heat banner (WebGL, image fallback) -->
+      <div class="float-can" id="floatCan">
+        <img src="assets/products/lemon-heat.png" alt="LESGO Lemon Heat tub" />
+        <canvas id="tubGl" aria-hidden="true"></canvas>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE BANNERS ============ -->
+    <section class="features">
+      <div class="feature-wrap">
+        <article class="feature">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/lemon-heat-02.png" />
+            <img class="feature__bg" src="assets/img/lemon-heat-01.png" alt="LESGO Lemon Heat in a gym" loading="lazy" />
+          </picture>
+          <div class="feature__heading">
+            <p class="eyebrow">Daily Performance Drink</p>
+            <h2>Lemon<br />Heat</h2>
+          </div>
+          <div class="feature__aside">
+            <p>A bold citrus blend with a hint of cayenne, crafted to support energy, focus, hydration, and your everyday routine.</p>
+            <div class="feature__btns">
+              <a href="#" class="btn btn--white"><span>Discover the Formula</span></a>
+              <a href="#best-sellers" class="btn btn--yellow"><span>Shop Now</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="feature-wrap">
+        <article class="feature">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/electric-lime-02.png" />
+            <img class="feature__bg" src="assets/img/electric-lime-01.png" alt="LESGO Electric Lime on a gym mat" loading="lazy" />
+          </picture>
+          <div class="feature__heading">
+            <p class="eyebrow">Daily Performance Drink</p>
+            <h2>Electric<br />Lime</h2>
+          </div>
+          <div class="feature__aside">
+            <p>A crisp, refreshing daily blend designed to support energy, focus, hydration, and everything you take on.</p>
+            <div class="feature__btns">
+              <a href="#" class="btn btn--white"><span>Discover the Formula</span></a>
+              <a href="#best-sellers" class="btn btn--yellow"><span>Shop Now</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ BEST SELLERS ============ -->
+    <section class="sellers" id="best-sellers">
+      <h2 class="section-title reveal">Our Best Sellers</h2>
+      <div class="sellers__grid">
+        <article class="product reveal">
+          <div class="product__media">
+            <img src="assets/products/lemon-heat.png" alt="Lemon Heat" loading="lazy" />
+            <div class="product__hover">
+              <button class="icon-btn product__wish" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+              <button class="btn btn--yellow product__cart"><span>Add to Cart</span></button>
+            </div>
+          </div>
+          <div class="product__info"><h3>Lemon Heat</h3><p>Daily Performance Drink</p><strong>$45.00</strong></div>
+        </article>
+        <article class="product reveal">
+          <div class="product__media">
+            <img src="assets/products/shaker.png" alt="LESGO Shaker Bottle" loading="lazy" />
+            <div class="product__hover">
+              <button class="icon-btn product__wish" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+              <button class="btn btn--yellow product__cart"><span>Add to Cart</span></button>
+            </div>
+          </div>
+          <div class="product__info"><h3>LESGO Shaker Bottle</h3><p>Accessories</p><strong>$19.99</strong></div>
+        </article>
+        <article class="product reveal">
+          <div class="product__media">
+            <img src="assets/products/prime-gummy.png" alt="LESGO Prime gummies" loading="lazy" />
+            <div class="product__hover">
+              <button class="icon-btn product__wish" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+              <button class="btn btn--yellow product__cart"><span>Add to Cart</span></button>
+            </div>
+          </div>
+          <div class="product__info"><h3>LESGO Prime</h3><p>Gummies</p><strong>$19.99</strong></div>
+        </article>
+        <article class="product reveal">
+          <div class="product__media">
+            <img src="assets/products/electric-lime.png" alt="Electric Lime" loading="lazy" />
+            <div class="product__hover">
+              <button class="icon-btn product__wish" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+              <button class="btn btn--yellow product__cart"><span>Add to Cart</span></button>
+            </div>
+          </div>
+          <div class="product__info"><h3>Electric Lime</h3><p>Daily Performance Drink</p><strong>$45.00</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EVERY PART OF YOUR DAY ============ -->
+    <section class="day" id="day">
+      <figure class="day__img day__img--1"><img src="assets/day/day-1.jpg" alt="Man scooping LESGO Lemon Heat into water" loading="lazy" /><figcaption>Morning</figcaption></figure>
+      <figure class="day__img day__img--2"><img src="assets/day/day-2.jpg" alt="Athlete resting with LESGO Lemon Heat" loading="lazy" /><figcaption>Training</figcaption></figure>
+      <figure class="day__img day__img--3"><img src="assets/day/day-3.jpg" alt="LESGO Electric Lime in a gym bag" loading="lazy" /><figcaption>Gym</figcaption></figure>
+      <figure class="day__img day__img--4"><img src="assets/day/day-4.jpg" alt="Two LESGO Electric Lime tubs on a sports field" loading="lazy" /><figcaption>Sport</figcaption></figure>
+      <h2 class="day__title reveal">For every part of<br /><em>your day</em></h2>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="loved">
+      <h2 class="section-title section-title--fade reveal">Loved by all...</h2>
+      <div class="loved__row">
+        <figure class="social reveal">
+          <img src="assets/img/social-01.png" alt="Man drinking from a LESGO shaker — Built for more" loading="lazy" />
+          <span class="social__play" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </figure>
+        <blockquote class="quote reveal">
+          <p>“The energy feels clean. The flavor actually makes me want to reach for it every morning.”</p>
+          <footer>
+            <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <cite>- LESGO community</cite>
+          </footer>
+        </blockquote>
+        <figure class="social reveal">
+          <img src="assets/img/social-02.png" alt="Runner in a race" loading="lazy" />
+          <span class="social__play" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ OFFER ============ -->
+    <section class="offer">
+      <h2 class="offer__title reveal">Stock up.<br />Save more.</h2>
+      <p class="offer__text reveal">Start with a box. Save more with a bundle. Or subscribe and never run out.</p>
+      <p class="offer__deal reveal"><strong>10%</strong> OFF</p>
+      <a href="#best-sellers" class="btn btn--yellow reveal"><span>Shop Bundles</span></a>
+      <div class="offer__media" id="offerMedia">
+        <img class="offer__img" src="assets/img/bundle.png" alt="LESGO Lemon Heat tub with shaker bottle" loading="lazy" />
+        <canvas class="offer__gl" id="offerGl" aria-hidden="true"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__top">
+      <div class="footer__news">
+        <h2>Get in the loop</h2>
+        <form class="footer__form" id="newsletter">
+          <label for="email" class="sr-only">Email address</label>
+          <input id="email" type="email" placeholder="Enter your email address" required />
+          <button type="submit">Join</button>
+        </form>
+        <p class="footer__msg" id="newsMsg" role="status"></p>
+      </div>
+      <div class="footer__links">
+        <div><h4>Shop</h4><a href="#">Daily Performance</a><a href="#">Gummies</a><a href="#">Accessories</a><a href="#">Bundles</a></div>
+        <div><h4>Discover</h4><a href="#">Why LESGO</a><a href="#">Formula</a><a href="#">Contact Us</a></div>
+        <div><h4>Policies</h4><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Shipping Policy</a><a href="#">Returns &amp; Refunds Policy</a><a href="#">Subscription Policy</a></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 LESGO SUPPLEMENTS.</p>
+      <div class="footer__social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a></div>
+    </div>
+    <img class="footer__logo" src="assets/img/logo.png" alt="" aria-hidden="true" loading="lazy" />
+  </footer>
+
+  <canvas class="cursor" id="cursor" aria-hidden="true"></canvas>
+
+  <script src="js/bundle-texture.js"></script>
+  <script src="js/tub-texture.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
